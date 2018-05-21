@@ -1,16 +1,16 @@
-//4xled.c
-//19.05.2018 функции для работы с 4хLED-индикатором при посегментном высвечивании
+п»ї//4xled.c
+//19.05.2018 С„СѓРЅРєС†РёРё РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ 4С…LED-РёРЅРґРёРєР°С‚РѕСЂРѕРј РїСЂРё РїРѕСЃРµРіРјРµРЅС‚РЅРѕРј РІС‹СЃРІРµС‡РёРІР°РЅРёРё
 //********************************************************
 #include <4xled.h>
 //********************************************************
-//переменная в которой хранится текущее значение высвечив сегмента
+//РїРµСЂРµРјРµРЅРЅР°СЏ РІ РєРѕС‚РѕСЂРѕР№ С…СЂР°РЅРёС‚СЃСЏ С‚РµРєСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ РІС‹СЃРІРµС‡РёРІ СЃРµРіРјРµРЅС‚Р°
 static volatile SEGMENT_t segment = SEG_A;
-//получить отображаемый сегмент
+//РїРѕР»СѓС‡РёС‚СЊ РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Р№ СЃРµРіРјРµРЅС‚
 SEGMENT_t getSegment(void)
 {
 	return segment;
 }
-//установить следующий сегмент
+//СѓСЃС‚Р°РЅРѕРІРёС‚СЊ СЃР»РµРґСѓСЋС‰РёР№ СЃРµРіРјРµРЅС‚
 void setSegment(SEGMENT_t newSegment)
 {
 	segment = newSegment;
@@ -47,60 +47,60 @@ void gpio_4xled_init(void)
 	//PA9 - R4 (output)
 	GPIOA->MODER |= GPIO_MODER_MODER9_0;
 	
-//-----Исходное положене ног - все выкл------------------------------
+//-----РСЃС…РѕРґРЅРѕРµ РїРѕР»РѕР¶РµРЅРµ РЅРѕРі - РІСЃРµ РІС‹РєР»------------------------------
 	R1_OFF; R2_OFF; R3_OFF; R4_OFF;
 	SEG_A_OFF; SEG_B_OFF; SEG_C_OFF; SEG_D_OFF; SEG_E_OFF; SEG_F_OFF; SEG_G_OFF; SEG_DP_OFF;
 }
 //*******************************************************************
-//функции управления сегментами индикатора
-void display_off()//погасить все сегменты
+//С„СѓРЅРєС†РёРё СѓРїСЂР°РІР»РµРЅРёСЏ СЃРµРіРјРµРЅС‚Р°РјРё РёРЅРґРёРєР°С‚РѕСЂР°
+void display_off()//РїРѕРіР°СЃРёС‚СЊ РІСЃРµ СЃРµРіРјРµРЅС‚С‹
 {
 	SEG_A_OFF; SEG_B_OFF; SEG_C_OFF; SEG_D_OFF; SEG_E_OFF; SEG_F_OFF; SEG_G_OFF; SEG_DP_OFF;
 }
-void display_on_A()//вкл сегммент А
+void display_on_A()//РІРєР» СЃРµРіРјРјРµРЅС‚ Рђ
 {
 	SEG_A_ON; SEG_B_OFF; SEG_C_OFF; SEG_D_OFF; SEG_E_OFF; SEG_F_OFF; SEG_G_OFF; SEG_DP_OFF;	
 }
-void display_on_B()//вкл сегммент B
+void display_on_B()//РІРєР» СЃРµРіРјРјРµРЅС‚ B
 {
 	SEG_A_OFF; SEG_B_ON; SEG_C_OFF; SEG_D_OFF; SEG_E_OFF; SEG_F_OFF; SEG_G_OFF; SEG_DP_OFF;
 }
-void display_on_C()//вкл сегммент C
+void display_on_C()//РІРєР» СЃРµРіРјРјРµРЅС‚ C
 {
 	SEG_A_OFF; SEG_B_OFF; SEG_C_ON; SEG_D_OFF; SEG_E_OFF; SEG_F_OFF; SEG_G_OFF; SEG_DP_OFF;
 }
-void display_on_D()//вкл сегммент D
+void display_on_D()//РІРєР» СЃРµРіРјРјРµРЅС‚ D
 {
 	SEG_A_OFF; SEG_B_OFF; SEG_C_OFF; SEG_D_ON; SEG_E_OFF; SEG_F_OFF; SEG_G_OFF; SEG_DP_OFF;
 }
-void display_on_E()//вкл сегммент E
+void display_on_E()//РІРєР» СЃРµРіРјРјРµРЅС‚ E
 {
 	SEG_A_OFF; SEG_B_OFF; SEG_C_OFF; SEG_D_OFF; SEG_E_ON; SEG_F_OFF; SEG_G_OFF; SEG_DP_OFF;
 }
-void display_on_F()//вкл сегммент F
+void display_on_F()//РІРєР» СЃРµРіРјРјРµРЅС‚ F
 {
 	SEG_A_OFF; SEG_B_OFF; SEG_C_OFF; SEG_D_OFF; SEG_E_OFF; SEG_F_ON; SEG_G_OFF; SEG_DP_OFF;
 }
-void display_on_G()//вкл сегммент G
+void display_on_G()//РІРєР» СЃРµРіРјРјРµРЅС‚ G
 {
 	SEG_A_OFF; SEG_B_OFF; SEG_C_OFF; SEG_D_OFF; SEG_E_OFF; SEG_F_OFF; SEG_G_ON; SEG_DP_OFF;
 }
-void display_on_DP()//вкл сегммент DP
+void display_on_DP()//РІРєР» СЃРµРіРјРјРµРЅС‚ DP
 {
 	SEG_A_OFF; SEG_B_OFF; SEG_C_OFF; SEG_D_OFF; SEG_E_OFF; SEG_F_OFF; SEG_G_OFF; SEG_DP_ON;
 }
 
 //*******************************************************************
-//вызов функции разбивает десятичное число (uint16_t num) на разряды
+//РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё СЂР°Р·Р±РёРІР°РµС‚ РґРµСЃСЏС‚РёС‡РЅРѕРµ С‡РёСЃР»Рѕ (uint16_t num) РЅР° СЂР°Р·СЂСЏРґС‹
 void razradCalculate(uint16_t num, uint8_t *razradDigits)
 {
-		if (num >9999) {num = 0;} //ограничили индикатор от переполнения(uint16_t num_МАХ=65535)
-		uint8_t razr = 0;//значение разрядов
-		//--- разбили на разряды в формате индикатора ----
+		if (num >9999) {num = 0;} //РѕРіСЂР°РЅРёС‡РёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РѕС‚ РїРµСЂРµРїРѕР»РЅРµРЅРёСЏ(uint16_t num_РњРђРҐ=65535)
+		uint8_t razr = 0;//Р·РЅР°С‡РµРЅРёРµ СЂР°Р·СЂСЏРґРѕРІ
+		//--- СЂР°Р·Р±РёР»Рё РЅР° СЂР°Р·СЂСЏРґС‹ РІ С„РѕСЂРјР°С‚Рµ РёРЅРґРёРєР°С‚РѕСЂР° ----
 		while(num >= 1000)
 		{
 			num -= 1000;
-			razr++;//вычислии цифру 4 разряда
+			razr++;//РІС‹С‡РёСЃР»РёРё С†РёС„СЂСѓ 4 СЂР°Р·СЂСЏРґР°
 		}
 		razradDigits[3] = razr;
 		razr =0;		
@@ -108,7 +108,7 @@ void razradCalculate(uint16_t num, uint8_t *razradDigits)
 		while(num >= 100)
 		{
 			num -= 100;
-			razr++;//вычислии цифру 3 разряда
+			razr++;//РІС‹С‡РёСЃР»РёРё С†РёС„СЂСѓ 3 СЂР°Р·СЂСЏРґР°
 		}
 		razradDigits[2] = razr;
 		razr = 0;
@@ -116,7 +116,7 @@ void razradCalculate(uint16_t num, uint8_t *razradDigits)
 		while(num >= 10)
 		{
 			num -= 10;
-			razr++;//вычислии цифру 2 разряда
+			razr++;//РІС‹С‡РёСЃР»РёРё С†РёС„СЂСѓ 2 СЂР°Р·СЂСЏРґР°
 		}
 		razradDigits[1] = razr;
 		razr = 0;
@@ -125,12 +125,12 @@ void razradCalculate(uint16_t num, uint8_t *razradDigits)
 		razradDigits[0] = razr;
 }
 //******************************************************************
-//библиотека символов индикатора (вкл разрядов индикатора)
-//для цифр от 0 до 9
+//Р±РёР±Р»РёРѕС‚РµРєР° СЃРёРјРІРѕР»РѕРІ РёРЅРґРёРєР°С‚РѕСЂР° (РІРєР» СЂР°Р·СЂСЏРґРѕРІ РёРЅРґРёРєР°С‚РѕСЂР°)
+//РґР»СЏ С†РёС„СЂ РѕС‚ 0 РґРѕ 9
 //-----------------------------------------------------------
 void setRazradForSegmentA (uint8_t *razradDigits)
 {
-	uint8_t razradFlag[4];//флаг вкл i-го разряда
+	uint8_t razradFlag[4];//С„Р»Р°Рі РІРєР» i-РіРѕ СЂР°Р·СЂСЏРґР°
 	int i;
 	for(i=0; i<4; i++)
 	{
@@ -140,8 +140,8 @@ void setRazradForSegmentA (uint8_t *razradDigits)
 		}
 		else {razradFlag[i] = 1;}
 	}
-	display_off();//погасили индикатор перед сменой информации
-	//вкл разряды для сегмента А
+	display_off();//РїРѕРіР°СЃРёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РїРµСЂРµРґ СЃРјРµРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
+	//РІРєР» СЂР°Р·СЂСЏРґС‹ РґР»СЏ СЃРµРіРјРµРЅС‚Р° Рђ
 	if(razradFlag[0] == 1) {R1_ON;}
 	else {R1_OFF;}
 	if(razradFlag[1] == 1) {R2_ON;}
@@ -150,11 +150,11 @@ void setRazradForSegmentA (uint8_t *razradDigits)
 	else {R3_OFF;}
 	if(razradFlag[3] == 1) {R4_ON;}
 	else {R4_OFF;}
-	display_on_A();//засветили сегмент А
+	display_on_A();//Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ Рђ
 }
 void setRazradForSegmentB (uint8_t *razradDigits)
 {
-	uint8_t razradFlag[4];//флаг вкл i-го разряда
+	uint8_t razradFlag[4];//С„Р»Р°Рі РІРєР» i-РіРѕ СЂР°Р·СЂСЏРґР°
 	int i;
 	for(i=0; i<4; i++)
 	{
@@ -164,8 +164,8 @@ void setRazradForSegmentB (uint8_t *razradDigits)
 		}
 		else {razradFlag[i] = 1;}
 	}
-	display_off();//погасили индикатор перед сменой информации
-	//вкл разряды для сегмента B
+	display_off();//РїРѕРіР°СЃРёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РїРµСЂРµРґ СЃРјРµРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
+	//РІРєР» СЂР°Р·СЂСЏРґС‹ РґР»СЏ СЃРµРіРјРµРЅС‚Р° B
 	if(razradFlag[0] == 1) {R1_ON;}
 	else {R1_OFF;}
 	if(razradFlag[1] == 1) {R2_ON;}
@@ -174,11 +174,11 @@ void setRazradForSegmentB (uint8_t *razradDigits)
 	else {R3_OFF;}
 	if(razradFlag[3] == 1) {R4_ON;}
 	else {R4_OFF;}
-	display_on_B();//засветили сегмент B
+	display_on_B();//Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ B
 }
 void setRazradForSegmentC (uint8_t *razradDigits)
 {
-	uint8_t razradFlag[4];//флаг вкл i-го разряда
+	uint8_t razradFlag[4];//С„Р»Р°Рі РІРєР» i-РіРѕ СЂР°Р·СЂСЏРґР°
 	int i;
 	for(i=0; i<4; i++)
 	{
@@ -188,8 +188,8 @@ void setRazradForSegmentC (uint8_t *razradDigits)
 		}
 		else {razradFlag[i] = 1;}
 	}
-	display_off();//погасили индикатор перед сменой информации
-	//вкл разряды для сегмента C
+	display_off();//РїРѕРіР°СЃРёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РїРµСЂРµРґ СЃРјРµРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
+	//РІРєР» СЂР°Р·СЂСЏРґС‹ РґР»СЏ СЃРµРіРјРµРЅС‚Р° C
 	if(razradFlag[0] == 1) {R1_ON;}
 	else {R1_OFF;}
 	if(razradFlag[1] == 1) {R2_ON;}
@@ -198,11 +198,11 @@ void setRazradForSegmentC (uint8_t *razradDigits)
 	else {R3_OFF;}
 	if(razradFlag[3] == 1) {R4_ON;}
 	else {R4_OFF;}
-	display_on_C();//засветили сегмент C
+	display_on_C();//Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ C
 }
 void setRazradForSegmentD (uint8_t *razradDigits)
 {
-	uint8_t razradFlag[4];//флаг вкл i-го разряда
+	uint8_t razradFlag[4];//С„Р»Р°Рі РІРєР» i-РіРѕ СЂР°Р·СЂСЏРґР°
 	int i;
 	for(i=0; i<4; i++)
 	{
@@ -212,8 +212,8 @@ void setRazradForSegmentD (uint8_t *razradDigits)
 		}
 		else {razradFlag[i] = 1;}
 	}
-	display_off();//погасили индикатор перед сменой информации
-	//вкл разряды для сегмента D
+	display_off();//РїРѕРіР°СЃРёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РїРµСЂРµРґ СЃРјРµРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
+	//РІРєР» СЂР°Р·СЂСЏРґС‹ РґР»СЏ СЃРµРіРјРµРЅС‚Р° D
 	if(razradFlag[0] == 1) {R1_ON;}
 	else {R1_OFF;}
 	if(razradFlag[1] == 1) {R2_ON;}
@@ -222,11 +222,11 @@ void setRazradForSegmentD (uint8_t *razradDigits)
 	else {R3_OFF;}
 	if(razradFlag[3] == 1) {R4_ON;}
 	else {R4_OFF;}
-	display_on_D();//засветили сегмент D
+	display_on_D();//Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ D
 }
 void setRazradForSegmentE (uint8_t *razradDigits)
 {
-	uint8_t razradFlag[4];//флаг вкл i-го разряда
+	uint8_t razradFlag[4];//С„Р»Р°Рі РІРєР» i-РіРѕ СЂР°Р·СЂСЏРґР°
 	int i;
 	for(i=0; i<4; i++)
 	{
@@ -236,8 +236,8 @@ void setRazradForSegmentE (uint8_t *razradDigits)
 		}
 		else {razradFlag[i] = 0;}
 	}
-	display_off();//погасили индикатор перед сменой информации
-	//вкл разряды для сегмента E
+	display_off();//РїРѕРіР°СЃРёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РїРµСЂРµРґ СЃРјРµРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
+	//РІРєР» СЂР°Р·СЂСЏРґС‹ РґР»СЏ СЃРµРіРјРµРЅС‚Р° E
 	if(razradFlag[0] == 1) {R1_ON;}
 	else {R1_OFF;}
 	if(razradFlag[1] == 1) {R2_ON;}
@@ -246,11 +246,11 @@ void setRazradForSegmentE (uint8_t *razradDigits)
 	else {R3_OFF;}
 	if(razradFlag[3] == 1) {R4_ON;}
 	else {R4_OFF;}
-	display_on_E();//засветили сегмент E
+	display_on_E();//Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ E
 }
 void setRazradForSegmentF (uint8_t *razradDigits)
 {
-	uint8_t razradFlag[4];//флаг вкл i-го разряда
+	uint8_t razradFlag[4];//С„Р»Р°Рі РІРєР» i-РіРѕ СЂР°Р·СЂСЏРґР°
 	int i;
 	for(i=0; i<4; i++)
 	{
@@ -260,8 +260,8 @@ void setRazradForSegmentF (uint8_t *razradDigits)
 		}
 		else {razradFlag[i] = 1;}
 	}
-	display_off();//погасили индикатор перед сменой информации
-	//вкл разряды для сегмента F
+	display_off();//РїРѕРіР°СЃРёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РїРµСЂРµРґ СЃРјРµРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
+	//РІРєР» СЂР°Р·СЂСЏРґС‹ РґР»СЏ СЃРµРіРјРµРЅС‚Р° F
 	if(razradFlag[0] == 1) {R1_ON;}
 	else {R1_OFF;}
 	if(razradFlag[1] == 1) {R2_ON;}
@@ -270,11 +270,11 @@ void setRazradForSegmentF (uint8_t *razradDigits)
 	else {R3_OFF;}
 	if(razradFlag[3] == 1) {R4_ON;}
 	else {R4_OFF;}
-	display_on_F();//засветили сегмент F
+	display_on_F();//Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ F
 }
 void setRazradForSegmentG (uint8_t *razradDigits)
 {
-	uint8_t razradFlag[4];//флаг вкл i-го разряда
+	uint8_t razradFlag[4];//С„Р»Р°Рі РІРєР» i-РіРѕ СЂР°Р·СЂСЏРґР°
 	int i;
 	for(i=0; i<4; i++)
 	{
@@ -284,8 +284,8 @@ void setRazradForSegmentG (uint8_t *razradDigits)
 		}
 		else {razradFlag[i] = 1;}
 	}
-	display_off();//погасили индикатор перед сменой информации
-	//вкл разряды для сегмента G
+	display_off();//РїРѕРіР°СЃРёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РїРµСЂРµРґ СЃРјРµРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
+	//РІРєР» СЂР°Р·СЂСЏРґС‹ РґР»СЏ СЃРµРіРјРµРЅС‚Р° G
 	if(razradFlag[0] == 1) {R1_ON;}
 	else {R1_OFF;}
 	if(razradFlag[1] == 1) {R2_ON;}
@@ -294,71 +294,71 @@ void setRazradForSegmentG (uint8_t *razradDigits)
 	else {R3_OFF;}
 	if(razradFlag[3] == 1) {R4_ON;}
 	else {R4_OFF;}
-	display_on_G();//засветили сегмент G
+	display_on_G();//Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ G
 }
 void setRazradForSegmentDP (uint8_t point)
 {
-	display_off();//погасили индикатор перед сменой информации
-	//вкл разряды для сегмента DP
-	if(point == 1) 		{R1_ON;   R2_OFF;  R3_OFF;  R4_OFF;}//десятичная точка в 1-м разряде(младшем)
-	else if(point == 2) {R1_OFF;  R2_ON;   R3_OFF;  R4_OFF;}//десятичная точка во 2-м разряде
-	else if(point == 3) {R1_OFF;  R2_OFF;  R3_ON;   R4_OFF;}//десятичная точка в 3-м разряде
-	else if(point == 4) {R1_OFF;  R2_OFF;  R3_OFF;  R4_ON;}//десятичная точка в 4-м разряде
-	display_on_DP();//засветили сегмент DP
+	display_off();//РїРѕРіР°СЃРёР»Рё РёРЅРґРёРєР°С‚РѕСЂ РїРµСЂРµРґ СЃРјРµРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё
+	//РІРєР» СЂР°Р·СЂСЏРґС‹ РґР»СЏ СЃРµРіРјРµРЅС‚Р° DP
+	if(point == 1) 		{R1_ON;   R2_OFF;  R3_OFF;  R4_OFF;}//РґРµСЃСЏС‚РёС‡РЅР°СЏ С‚РѕС‡РєР° РІ 1-Рј СЂР°Р·СЂСЏРґРµ(РјР»Р°РґС€РµРј)
+	else if(point == 2) {R1_OFF;  R2_ON;   R3_OFF;  R4_OFF;}//РґРµСЃСЏС‚РёС‡РЅР°СЏ С‚РѕС‡РєР° РІРѕ 2-Рј СЂР°Р·СЂСЏРґРµ
+	else if(point == 3) {R1_OFF;  R2_OFF;  R3_ON;   R4_OFF;}//РґРµСЃСЏС‚РёС‡РЅР°СЏ С‚РѕС‡РєР° РІ 3-Рј СЂР°Р·СЂСЏРґРµ
+	else if(point == 4) {R1_OFF;  R2_OFF;  R3_OFF;  R4_ON;}//РґРµСЃСЏС‚РёС‡РЅР°СЏ С‚РѕС‡РєР° РІ 4-Рј СЂР°Р·СЂСЏРґРµ
+	display_on_DP();//Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ DP
 }
 //******************************************************************
-//--------высвечивание индикатора---------------------
-//каждый вызов функции высвечивает 1н сегмент всех разрядов индикатора.
-//Нужно вызвать функцию 8-м раз что бы высветить все число(не зависимо от разрядности индикатора)
+//--------РІС‹СЃРІРµС‡РёРІР°РЅРёРµ РёРЅРґРёРєР°С‚РѕСЂР°---------------------
+//РєР°Р¶РґС‹Р№ РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё РІС‹СЃРІРµС‡РёРІР°РµС‚ 1РЅ СЃРµРіРјРµРЅС‚ РІСЃРµС… СЂР°Р·СЂСЏРґРѕРІ РёРЅРґРёРєР°С‚РѕСЂР°.
+//РќСѓР¶РЅРѕ РІС‹Р·РІР°С‚СЊ С„СѓРЅРєС†РёСЋ 8-Рј СЂР°Р· С‡С‚Рѕ Р±С‹ РІС‹СЃРІРµС‚РёС‚СЊ РІСЃРµ С‡РёСЃР»Рѕ(РЅРµ Р·Р°РІРёСЃРёРјРѕ РѕС‚ СЂР°Р·СЂСЏРґРЅРѕСЃС‚Рё РёРЅРґРёРєР°С‚РѕСЂР°)
 void display(uint8_t *razradDigits)
-{//в матрице razradDigits[4] - хранятся значения разрядов индикатора.
+{//РІ РјР°С‚СЂРёС†Рµ razradDigits[4] - С…СЂР°РЅСЏС‚СЃСЏ Р·РЅР°С‡РµРЅРёСЏ СЂР°Р·СЂСЏРґРѕРІ РёРЅРґРёРєР°С‚РѕСЂР°.
 		switch (getSegment())
 		{
 			        case SEG_A:
 						{
-							setRazradForSegmentA (razradDigits);//вкл разряды сегмента А & засветили сегмент А
+							setRazradForSegmentA (razradDigits);//РІРєР» СЂР°Р·СЂСЏРґС‹ СЃРµРіРјРµРЅС‚Р° Рђ & Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ Рђ
 							setSegment(SEG_B);
 							break;
 						}
 					case SEG_B:
 						{
-							setRazradForSegmentB (razradDigits);//вкл разряды сегмента B & засветили сегмент B
+							setRazradForSegmentB (razradDigits);//РІРєР» СЂР°Р·СЂСЏРґС‹ СЃРµРіРјРµРЅС‚Р° B & Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ B
 							setSegment(SEG_C);
 							break;
 						}
 					case SEG_C:
 						{
-							setRazradForSegmentC (razradDigits);//вкл разряды сегмента C & засветили сегмент C
+							setRazradForSegmentC (razradDigits);//РІРєР» СЂР°Р·СЂСЏРґС‹ СЃРµРіРјРµРЅС‚Р° C & Р·Р°СЃРІРµС‚РёР»Рё СЃРµРіРјРµРЅС‚ C
 							setSegment(SEG_D);
 							break;
 						}
 					case SEG_D:
 						{
-							setRazradForSegmentD (razradDigits);//вкл разряды сегмента D
+							setRazradForSegmentD (razradDigits);//РІРєР» СЂР°Р·СЂСЏРґС‹ СЃРµРіРјРµРЅС‚Р° D
 							setSegment(SEG_E);
 							break;
 						}
 					case SEG_E:
 						{
-							setRazradForSegmentE (razradDigits);//вкл разряды сегмента E
+							setRazradForSegmentE (razradDigits);//РІРєР» СЂР°Р·СЂСЏРґС‹ СЃРµРіРјРµРЅС‚Р° E
 							setSegment(SEG_F);
 							break;
 						}
 					case SEG_F:
 						{
-							setRazradForSegmentF (razradDigits);//вкл разряды сегмента F
+							setRazradForSegmentF (razradDigits);//РІРєР» СЂР°Р·СЂСЏРґС‹ СЃРµРіРјРµРЅС‚Р° F
 							setSegment(SEG_G);
 							break;
 						}
 					case SEG_G:
 						{
-							setRazradForSegmentG (razradDigits);//вкл разряды сегмента G
+							setRazradForSegmentG (razradDigits);//РІРєР» СЂР°Р·СЂСЏРґС‹ СЃРµРіРјРµРЅС‚Р° G
 							setSegment(SEG_DP);
 							break;
 						}
 					case SEG_DP:
 						{
-							setRazradForSegmentDP (3);//вкл разряды сегмента DP
+							setRazradForSegmentDP (3);//РІРєР» СЂР°Р·СЂСЏРґС‹ СЃРµРіРјРµРЅС‚Р° DP
 							setSegment(SEG_A);
 							break;
 						}
